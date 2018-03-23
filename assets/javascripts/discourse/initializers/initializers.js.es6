@@ -11,13 +11,13 @@ export default {
 			api.includePostAttributes('topic');
 
 			api.addPostTransformCallback((post) => {
-				dir (post);
-				dir (Discourse.SiteSettings.discourse_private_tag_plugin_enabled);
-				dir (Discourse.SiteSettings.discourse_private_tag_plugin_forbidden_tags);
+				console.dir (post);
+				console.dir (Discourse.SiteSettings.discourse_private_tag_plugin_enabled);
+				console.dir (Discourse.SiteSettings.discourse_private_tag_plugin_forbidden_tags);
 
 				if (user === null && Discourse.SiteSettings.discourse_private_tag_plugin_enabled) {
 					if (post.topic !== null && post.topic.tags !== null && post.topic.tags.length > 0) {
-						dir (post.topic.tags);
+						console.dir (post.topic.tags);
 					}
 
 					post.cooked = "Plugin discourse-private-tag-plugin has hidden this post.";
