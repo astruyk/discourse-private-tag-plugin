@@ -22,7 +22,7 @@ export default {
 						console.log("Checking tags...");
 						let forbiddenTags = Discourse.SiteSettings.discourse_private_tag_plugin_forbidden_tags.split(',');
 						console.dir(forbiddenTags);
-						let foundTags = post.topic.tags.filter((tag) => (forbiddenTags.indexOf(tag) === -1));
+						let foundTags = post.topic.tags.filter((tag) => (forbiddenTags.indexOf(tag) !== -1));
 						console.dir(foundTags);
 						foundForbiddenTag = foundTags.length > 0;
 						console.dir(foundForbiddenTag);
