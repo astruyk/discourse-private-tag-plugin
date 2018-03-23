@@ -7,7 +7,8 @@ export default {
 			let user = api.getCurrentUser();
 			api.addPostTransformCallback((t) => {
 				if (user === null) {
-					t.cooked = "Plugin discourse-private-tag-plugin has hidden this post.\n\n<pre>\n" + JSON.stringify(t) + "\n\n" + JSON.stringify(api.container) + "\n</pre>\n";
+					let foo = api.h;
+					t.cooked = "Plugin discourse-private-tag-plugin has hidden this post.\n\n<pre>\n" + JSON.stringify(t) + "\n</pre>\n";
 				}
 			});
 		});
