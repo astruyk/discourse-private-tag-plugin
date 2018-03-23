@@ -1,0 +1,4 @@
+plugins:
+  privateTag_enabled:
+    default: true
+    client: true
