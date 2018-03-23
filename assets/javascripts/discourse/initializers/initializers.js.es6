@@ -29,6 +29,7 @@ export default {
 					}
 
 					if (foundForbiddenTag) {
+						console.dir(Discourse.SiteSettings.discourse_private_tag_plugin_hidden_message);
 						post.cooked = "<div class=\"discourse_private_tag_plugin_hidden\">" +
 							Discourse.SiteSettings.discourse_private_tag_plugin_hidden_message +
 							"</div>";
