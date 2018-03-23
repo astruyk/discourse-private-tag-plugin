@@ -21,3 +21,9 @@ cd /var/discourse
 ```
 
 That's it!
+
+## Security Note
+Because of the way this plugin is implemented, we do the filtering in Ember (i.e. client side)
+when the posts are being displayed. This means that it's _possible_ to intercept the point where
+the filtering is being done in a debugger and see the original messages. If you're looking for
+a 100% secure solution, this is not it. Do not use this to hide government secrets.
