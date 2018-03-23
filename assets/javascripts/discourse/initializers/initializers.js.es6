@@ -13,6 +13,8 @@ export default {
 			api.addPostTransformCallback((post) => {
 				if (user === null && Discourse.SiteSettings.discourse_private_tag_plugin_enabled) {
 					
+					console.dir($(".tag-private"));
+
 					let foundForbiddenTag = false;
 					if (post.topic.tags.length > 0) {
 						// Figure out what the tags on the post are, and what tags we don't want to allow.
