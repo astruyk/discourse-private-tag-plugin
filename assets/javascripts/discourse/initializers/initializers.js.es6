@@ -16,13 +16,27 @@ export default {
 				console.dir (Discourse.SiteSettings.discourse_private_tag_plugin_enabled);
 				console.dir (Discourse.SiteSettings.discourse_private_tag_plugin_forbidden_tags);
 				console.dir(Discourse.SiteSettings.discourse_private_tag_plugin_hidden_message);
+				console.dir(Discourse.SiteSettings.discourse_private_tag_plugin_case_sensitive);
 				console.dir(Discourse.SiteSettings);
 
 				if (user === null && Discourse.SiteSettings.discourse_private_tag_plugin_enabled) {
+					
 					let foundForbiddenTag = false;
 					if (post.topic.tags.length > 0) {
-						let forbiddenTags = Discourse.SiteSettings.discourse_private_tag_plugin_forbidden_tags.split(',');
-						let foundTags = post.topic.tags.filter((tag) => (forbiddenTags.indexOf(tag) !== -1));
+						// Figure out what the tags on the post are, and what tags we don't want to allow.
+						let forbiddenTags = Discourse.SiteSettings.discourse_private_tag_plugin_forbidden_tags
+							.split(',')
+							.map((item) => item.trim());
+						let postTags = post.topic.tags;
+
+						if (!Discourse.SiteSettings.discourse_private_tag_plugin_case_sensitive) {
+							// By shifting the items we will compare to lowercase we will ignore case.
+							forbiddenTags = forbiddenTags.map((tag) => tag.toLowerCase());
+							postTags = postTags.map((tag) => tag.toLowerCase());
+						}
+
+						// Search for any of the tags that we don't want to allow.
+						let foundTags = postTags.filter((tag) => (forbiddenTags.indexOf(tag.toLowerCase()) !== -1));
 						foundForbiddenTag = foundTags.length > 0;
 					}
 
