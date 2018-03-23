@@ -12,6 +12,9 @@ export default {
 				if (user === null) {
 					console.log("Running plugin on post...");
 					console.dir(post);
+					if (post.topic && post.topic.tags && post.topic.tags.length > 0) {
+						console.log("Tags: " + post.topic.tags);
+					}
 					post.cooked = "Plugin discourse-private-tag-plugin has hidden this post.";
 				}
 			});
