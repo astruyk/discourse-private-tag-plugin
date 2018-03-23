@@ -29,7 +29,9 @@ export default {
 					}
 
 					if (foundForbiddenTag) {
-						post.cooked = "<span class=\"discourse_private_tag_plugin_hidden\">Posts in this topic are not visible to users that are not logged in.</span>";
+						post.cooked = "<div class=\"discourse_private_tag_plugin_hidden\">" +
+							Discourse.SiteSettings.discourse_private_tag_plugin_hidden_message +
+							"</div>";
 					}
 				}
 			});

@@ -2,3 +2,4 @@ en:
   site_settings:
     discourse_private_tag_plugin_enabled: "Enable discourse-private-tag-plugin?"
     discourse_private_tag_plugin_forbidden_tags: "Forbidden Tags"
+    discourse_private_tag_plugin_hidden_message: "Forbidden Message"
