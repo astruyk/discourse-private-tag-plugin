@@ -19,9 +19,13 @@ export default {
 				if (user === null && Discourse.SiteSettings.discourse_private_tag_plugin_enabled) {
 					let foundForbiddenTag = false;
 					if (post.topic.tags.length > 0) {
+						console.log("Checking tags...");
 						let forbiddenTags = Discourse.SiteSettings.discourse_private_tag_plugin_forbidden_tags.split(',');
+						console.dir(forbiddenTags);
 						let foundTags = post.topic.tags.filter((tag) => (forbiddenTags.indexOf(tag) === -1));
+						console.dir(foundTags);
 						foundForbiddenTag = foundTags.length > 0;
+						console.dir(foundForbiddenTag);
 					}
 
 					if (foundForbiddenTag) {
