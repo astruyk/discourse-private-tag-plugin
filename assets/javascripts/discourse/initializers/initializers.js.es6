@@ -12,20 +12,21 @@ export default {
 
 			api.addPostTransformCallback((post) => {
 				console.dir (post);
+				console.dir (post.topic.tags);
 				console.dir (Discourse.SiteSettings.discourse_private_tag_plugin_enabled);
 				console.dir (Discourse.SiteSettings.discourse_private_tag_plugin_forbidden_tags);
 
 				if (user === null && Discourse.SiteSettings.discourse_private_tag_plugin_enabled) {
-					if (post.topic !== null && post.topic.tags !== null && post.topic.tags.length > 0) {
-						console.dir (post.topic.tags);
+					let foundForbiddenTag = false;
+					if (post.topic.tags.length > 0) {
+						let forbiddenTags = Discourse.SiteSettings.discourse_private_tag_plugin_forbidden_tags.split(',');
+						let foundTags = post.topic.tags.filter((tag) => (forbiddenTags.indexOf(tag) === -1));
+						foundForbiddenTag = foundTags.length > 0;
 					}
 
-					post.cooked = "Plugin discourse-private-tag-plugin has hidden this post.";
-				}
-				else
-				{
-					// TODO remove this.
-					post.cooked = "OK " + post.cooked;
+					if (foundForbiddenTag) {
+						post.cooked = "<span class=\"discourse_private_tag_plugin_hidden\">Posts in this topic are not visible to users that are not logged in.</span>";
+					}
 				}
 			});
 		});
