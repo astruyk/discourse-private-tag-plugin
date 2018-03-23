@@ -1,3 +1,4 @@
 en:
   site_settings:
-    privateTag_enabled: "Enable discourse-private-tag-plugin?"
+    discourse_private_tag_plugin_enabled: "Enable discourse-private-tag-plugin?"
+    discourse_private_tag_plugin_forbidden_tags: "Forbidden Tags"

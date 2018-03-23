@@ -1,4 +1,7 @@
 plugins:
-  privateTag_enabled:
+  discourse_private_tag_plugin_enabled:
     default: true
+    client: true
+  discourse_private_tag_plugin_forbidden_tags:
+    default: ""
     client: true

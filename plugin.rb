@@ -4,4 +4,4 @@
 # authors: Anton Struyk
 # url: https://github.com/astruyk/discourse-private-tag-plugin
 
-enabled_site_setting :privateTag_enabled
+enabled_site_setting :discourse_private_tag_plugin_enabled
