@@ -5,13 +5,14 @@ export default {
 	initialize() {
 		withPluginApi('0.8.18', api => {
 			let user = api.getCurrentUser();
-			api.addPostTransformCallback((t) => {
+
+			api.includePostAttributes('topic');
+
+			api.addPostTransformCallback((post) => {
 				if (user === null) {
 					console.log("Running plugin on post...");
-					console.dir(api.h);
-					console.dir(t);
-					t.cooked = "Plugin discourse-private-tag-plugin has hidden this post.\n\n<pre>\n" + JSON.stringify(t, null, 2) + "\n</pre>\n";
-					debugger;
+					console.dir(post);
+					post.cooked = "Plugin discourse-private-tag-plugin has hidden this post.";
 				}
 			});
 		});
