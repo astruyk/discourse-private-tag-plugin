@@ -15,7 +15,11 @@ export default {
 
 					// This is a bit hacky, but for each tag on this post there is a '.tag-<tagName>' class present
 					// So if we find any of the forbidden tags, we know we should hide this post.
-					foundForbiddenTag = forbiddenTags.filter((tag) => ($(".tag-" + tag).length > 0)) > 0;
+					console.dir(forbiddenTags);
+					let foundTags = forbiddenTags.filter((tag) => ($(".tag-" + tag).length > 0));
+					console.dir(foundTags);
+					foundForbiddenTag = foundTags > 0;
+					console.dir(foundForbiddenTag);
 
 					if (foundForbiddenTag) {
 						post.cooked = "<div class=\"discourse_private_tag_plugin_hidden\">" +
