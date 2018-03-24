@@ -18,7 +18,7 @@ export default {
 					console.dir(forbiddenTags);
 					let foundTags = forbiddenTags.filter((tag) => ($(".tag-" + tag).length > 0));
 					console.dir(foundTags);
-					foundForbiddenTag = foundTags > 0;
+					foundForbiddenTag = foundTags.length > 0;
 					console.dir(foundForbiddenTag);
 
 					if (foundForbiddenTag) {
